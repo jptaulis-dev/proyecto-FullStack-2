@@ -1,13 +1,13 @@
 const productos = [
-    { id: 1, codigo: "FR001", nombre: "Manzanas Fuji", categoria: "Frutas Frescas", precio: 1200, unidad: "kilo", stock: 150, descripcion: "Manzanas Fuji crujientes y dulces, cultivadas en el Valle del Maule." },
-    { id: 2, codigo: "FR002", nombre: "Naranjas Valencia", categoria: "Frutas Frescas", precio: 1000, unidad: "kilo", stock: 200, descripcion: "Jugosas y ricas en vitamina C, ideales para zumos frescos." },
-    { id: 3, codigo: "FR003", nombre: "Plátanos Cavendish", categoria: "Frutas Frescas", precio: 800, unidad: "kilo", stock: 250, descripcion: "Plátanos maduros y dulces, perfectos para el desayuno." },
-    { id: 4, codigo: "VR001", nombre: "Zanahorias Orgánicas", categoria: "Verduras Orgánicas", precio: 900, unidad: "kilo", stock: 100, descripcion: "Cultivadas sin pesticidas en la Región de O'Higgins." },
-    { id: 5, codigo: "VR002", nombre: "Espinacas Frescas", categoria: "Verduras Orgánicas", precio: 700, unidad: "bolsa de 500g", stock: 80, descripcion: "Frescas y nutritivas, perfectas para ensaladas y batidos verdes." },
-    { id: 6, codigo: "VR003", nombre: "Pimientos Tricolores", categoria: "Verduras Orgánicas", precio: 1500, unidad: "kilo", stock: 8, descripcion: "Rojos, amarillos y verdes, ideales para salteados." },
-    { id: 7, codigo: "PO001", nombre: "Miel Orgánica", categoria: "Productos Orgánicos", precio: 5000, unidad: "frasco de 500g", stock: 0, descripcion: "Miel pura producida por apicultores locales." },
-    { id: 8, codigo: "PO003", nombre: "Quinua Orgánica", categoria: "Productos Orgánicos", precio: 3200, unidad: "bolsa de 500g", stock: 60, descripcion: "Grano andino rico en proteínas." },
-    { id: 9, codigo: "PL001", nombre: "Leche Entera", categoria: "Productos Lácteos", precio: 1100, unidad: "litro", stock: 90, descripcion: "Proveniente de granjas locales, rica en calcio." }
+    { id: 1, codigo: "FR001", nombre: "Manzanas Fuji", categoria: "Frutas Frescas", precio: 1200, unidad: "kilo", stock: 150, descripcion: "Manzanas Fuji crujientes y dulces, cultivadas en el Valle del Maule.", imagen: "imagenes/manzanas-fuji.png" },
+    { id: 2, codigo: "FR002", nombre: "Naranjas Valencia", categoria: "Frutas Frescas", precio: 1000, unidad: "kilo", stock: 200, descripcion: "Jugosas y ricas en vitamina C, ideales para zumos frescos.", imagen: "imagenes/naranjas-valencia.png" },
+    { id: 3, codigo: "FR003", nombre: "Plátanos Cavendish", categoria: "Frutas Frescas", precio: 800, unidad: "kilo", stock: 250, descripcion: "Plátanos maduros y dulces, perfectos para el desayuno.", imagen: "imagenes/platanos-cavendish.jpg" },
+    { id: 4, codigo: "VR001", nombre: "Zanahorias Orgánicas", categoria: "Verduras Orgánicas", precio: 900, unidad: "kilo", stock: 100, descripcion: "Cultivadas sin pesticidas en la Región de O'Higgins.", imagen: "imagenes/zanahorias-organicas.jpg" },
+    { id: 5, codigo: "VR002", nombre: "Espinacas Frescas", categoria: "Verduras Orgánicas", precio: 700, unidad: "bolsa de 500g", stock: 80, descripcion: "Frescas y nutritivas, perfectas para ensaladas y batidos verdes.", imagen: "imagenes/espinacas-frescas.png" },
+    { id: 6, codigo: "VR003", nombre: "Pimientos Tricolores", categoria: "Verduras Orgánicas", precio: 1500, unidad: "kilo", stock: 8, descripcion: "Rojos, amarillos y verdes, ideales para salteados.", imagen: "imagenes/pimientos-tricolores.jpg" },
+    { id: 7, codigo: "PO001", nombre: "Miel Orgánica", categoria: "Productos Orgánicos", precio: 5000, unidad: "frasco de 500g", stock: 0, descripcion: "Miel pura producida por apicultores locales.", imagen: "imagenes/miel-organica.jpg" },
+    { id: 8, codigo: "PO003", nombre: "Quinua Orgánica", categoria: "Productos Orgánicos", precio: 3200, unidad: "bolsa de 500g", stock: 60, descripcion: "Grano andino rico en proteínas.", imagen: "imagenes/quinua-organica.jpg" },
+    { id: 9, codigo: "PL001", nombre: "Leche Entera", categoria: "Productos Lácteos", precio: 1100, unidad: "litro", stock: 90, descripcion: "Proveniente de granjas locales, rica en calcio.", imagen: "imagenes/leche-entera.jpg" }
 ];
 
 // funciones y cambios en reglas de negocio para el carrito de compras
@@ -27,7 +27,7 @@ function mostrarProductos(lista, idContenedor) {
         }
 
         html += "<div class='tarjeta-producto'>";
-        html += "<div class='imagen' role='img' aria-label='Imagen de " + p.nombre + "'>" + p.nombre.charAt(0) + "</div>";
+        html += "<div class='imagen'><img src='" + p.imagen + "' alt='" + p.nombre + "'></div>";
         html += "<div class='info'>";
         html += "<strong>" + p.nombre + "</strong>";
         html += "<p class='categoria-producto'>" + p.categoria + "</p>";
