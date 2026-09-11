@@ -22,7 +22,7 @@
         <div class="acciones-header">
             <a href="login.html">Iniciar sesión</a>
             <a href="registro.html">Registrarse</a>
-            <a href="carrito.html" class="carrito-boton">🛒 Carrito</a>
+            <a href="carrito.html" class="carrito-boton" id="contador-carrito">🛒 Carrito (0)</a>
         </div>
     </header>
 
@@ -41,6 +41,7 @@
 
     <script src="js/producto.js"></script>
     <script src="js/carrito.js"></script>
+    <script src="js/comun.js"></script>
     <script>
         function cargarFiltros() {
             const contenedorFiltros = document.getElementById("filtros-categoria");
