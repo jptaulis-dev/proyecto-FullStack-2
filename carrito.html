@@ -31,19 +31,33 @@
 
     <main>
         <h1>Mi carrito</h1>
-        <div id="items-carrito"></div>
-        <p style="font: size20px; font-weight:bold; text-align:right;">
-            total: <span id="total-carrito"></span>
-        </p>
+        
+        <!-- 1. Aquí es donde JS inyectará las filas de productos -->
+        <div id="items-carrito">
+            <!-- Esto se llenará automáticamente -->
+        </div>
 
-        <button class="boton" onclick="alert('flujo de pago no incluido')">pagar</button>
+        <div style="text-align: right; margin-top: 20px;">
+            <!-- 2. Aquí es donde JS inyectará el precio total -->
+            <h3>Total: <span id="total-carrito">$0</span></h3>
+            <br>
+            <button class="boton boton-oferta">Pagar</button>
+        </div>
     </main>
 
+    <!-- PIE DE PÁGINA (Mantén el que ya tienes) -->
     <footer class="principal">
         <p>&copy; 2026 HuertoHogar — Proyecto Evaluación 1, DSY1104</p>
     </footer>
 
+    <!-- 3. Orden estricto de los scripts -->
     <script src="js/comun.js"></script>
-
+    <script src="js/producto.js"></script> <!-- El catálogo DEBE cargar antes que el carrito -->
+    <script src="js/carrito.js"></script>
+    
+    <!-- 4. La chispa de encendido: llamamos a la función apenas abre la página -->
+    <script>
+        mostrarCarrito();
+    </script>
 </body>
 </html>
