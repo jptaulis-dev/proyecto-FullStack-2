@@ -18,21 +18,25 @@ function mostrarProductos(lista, idContenedor) {
     for (let i = 0; i < lista.length; i++) {
         const p = lista[i];
 
-        let botonHtml = "<button class='boton' onclick='agregarAlCarrito(" + p.id + ", 1)'>Añadir</button>";
+        let botonHtml = "<button class='boton' onclick='agregarAlCarrito(" + p.id + ", 1)'>Agregar al carrito</button>";
 
         if (p.stock === 0) {
-            botonHtml = "<span style='color:#b3261e; font-weight:bold;'>Agotado</span>";
+            botonHtml = "<span class='estado-agotado'>Agotado</span>";
         } else if (tienePocoStock(p)) {
-            botonHtml = botonHtml + "<br><small style='color:#e6a700;'>⚠️ Quedan pocas</small>";
+            botonHtml = botonHtml + "<small class='estado-poco-stock'>Poco stock</small>";
         }
 
         html += "<div class='tarjeta-producto'>";
-        html += "<a href='producto-detalle.html?id=" + p.id + "'><div class='imagen'></div></a>";
+        html += "<div class='imagen' role='img' aria-label='Imagen de " + p.nombre + "'>" + p.nombre.charAt(0) + "</div>";
         html += "<div class='info'>";
-        html += "<a href='producto-detalle.html?id=" + p.id + "'><strong>" + p.nombre + "</strong></a>";
-        html += "<p style='color:#666666; font-size:14px; margin:4px 0;'>" + p.categoria + "</p>";
+        html += "<strong>" + p.nombre + "</strong>";
+        html += "<p class='categoria-producto'>" + p.categoria + "</p>";
         html += "<p class='precio'>$" + p.precio.toLocaleString("es-CL") + " / " + p.unidad + "</p>";
+        html += "<p class='stock-producto'>Stock: " + p.stock + "</p>";
+        html += "<div class='acciones-producto'>";
+        html += "<a class='boton boton-detalle' href='producto-detalle.html?id=" + p.id + "'>Ver detalle</a>";
         html += botonHtml;
+        html += "</div>";
         html += "</div></div>";
     }
 

@@ -1,25 +1,37 @@
-/* =========================================================
-   HUERTOHOGAR - style.css
-   Paleta y tipografías definidas en el documento del caso
-   (Forma A: HuertoHogar).
-   ========================================================= */
 
-* { box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap');
 
-body {
-    margin: 0;
-    font-family: 'Montserrat', Arial, sans-serif;
-    background-color: #F7F7F7;
-    color: #333333;
+/* 2. Variables de colores oficiales de la marca */
+:root {
+    --blanco-suave: #F7F7F7;
+    --verde-esmeralda: #2E8B57;
+    --amarillo-mostaza: #FFD700;
+    --marron-claro: #8B4513;
+    --gris-oscuro: #333333;
+    --gris-medio: #666666;
 }
 
-h1, h2, h3 {
+/* 3. Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--blanco-suave);
+    color: var(--gris-oscuro);
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* 4. Tipografía exclusiva para los encabezados */
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', Georgia, serif;
-    color: #8B4513;
+    color: var(--marron-claro);
 }
 
 a {
-    color: #2E8B57;
+    color: var(--verde-esmeralda);
     text-decoration: none;
 }
 
@@ -32,6 +44,8 @@ img {
     display: block;
 }
 
+/* ... de aquí en adelante dejas todo tu código de header.principal, main, etc. tal cual lo tienes ... */
+
 /* ---------- Encabezado y navegación ---------- */
 header.principal {
     display: flex;
@@ -40,7 +54,7 @@ header.principal {
     flex-wrap: wrap;
     gap: 12px;
     padding: 16px 30px;
-    background-color: #2E8B57;
+    background-color: var(--verde-esmeralda);
 }
 
 header.principal .logo {
@@ -95,7 +109,7 @@ main {
     flex-wrap: wrap;
     align-items: center;
     gap: 30px;
-    background-color: white;
+    background-color: #FFFFFF;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 30px;
@@ -113,32 +127,32 @@ main {
 }
 
 .hero-texto p {
-    color: #666666;
-    font-size: 16px;
+    color: var(--gris-medio);
+    font-size: 14px;
 }
 
 .hero-imagen {
     flex: 1;
     min-width: 260px;
-    background-color: #F7F7F7;
-    border: 2px dashed #2E8B57;
+    background-color: var(--blanco-suave);
+    border: 2px dashed var(--verde-esmeralda);
     border-radius: 12px;
     height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #666666;
+    color: var(--gris-medio);
 }
 
 /* ---------- Botones ---------- */
 .boton {
     display: inline-block;
-    padding: 12px 22px;
+    padding: 12px 16px;
     border: none;
     border-radius: 8px;
-    background-color: #2E8B57;
-    color: white;
-    font-size: 16px;
+    background-color: var(--verde-esmeralda);
+    color: #FFFFFF;
+    font-size: 14px;
     cursor: pointer;
 }
 
@@ -148,15 +162,15 @@ main {
 }
 
 .boton-oferta {
-    background-color: #FFD700;
-    color: #333333;
+    background-color: var(--amarillo-mostaza);
+    color: var(--gris-oscuro);
 }
 
 .boton-oferta:hover {
     background-color: #e6c200;
 }
 
-/* ---------- Tarjetas de producto (se usan más adelante) ---------- */
+
 .grid-productos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -165,25 +179,22 @@ main {
 }
 
 .tarjeta-producto {
-    background-color: white;
+    background-color: #FFFFFF;
     border: 1px solid #e0e0e0;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
 }
 
 .tarjeta-producto .imagen {
-    background-color: #F7F7F7;
+    background-color: var(--blanco-suave);
     aspect-ratio: 1 / 1;
 }
 
-.tarjeta-producto .info {
-    padding: 14px;
-}
 
 .tarjeta-producto .precio {
-    color: #2E8B57;
+    color: var(--verde-esmeralda);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 /* ---------- Pie de página ---------- */
@@ -191,11 +202,11 @@ footer.principal {
     border-top: 1px solid #e0e0e0;
     padding: 20px 30px;
     text-align: center;
-    color: #666666;
+    color: var(--gris-medio);
     font-size: 14px;
 }
 
-/* ---------- Responsivo ---------- */
+
 @media (max-width: 700px) {
     header.principal {
         flex-direction: column;
@@ -203,14 +214,25 @@ footer.principal {
     }
 }
 
-.fila-carrito {
-    display: grid;
-    grid-template-columns: 1fr auto auto auto;
-    gap: 15px;
-    align-items: center;
-    background-color: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-bottom: 10px;
+.tarjeta-producto .info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filtros-categoria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0 20px;
+}
+
+.filtro-categoria.activo {
+    background-color: #8B4513;
+}
+
+.tarjeta-producto .boton + .boton,
+.tarjeta-producto button + button {
+    margin-top: 10px;
 }

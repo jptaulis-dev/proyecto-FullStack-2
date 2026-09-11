@@ -28,12 +28,55 @@
 
     <main>
         <h1>Productos</h1>
-        <p style="color:#666666;">Próximo paso: aquí van las tarjetas de productos (imagen, nombre, precio, botón añadir).</p>
+        <section class="catalogo" aria-labelledby="titulo-catalogo">
+            <h2 id="titulo-catalogo">Catálogo</h2>
+            <div id="filtros-categoria" class="filtros-categoria" aria-label="Filtrar por categoría"></div>
+            <div id="productos-contenedor" class="grid-productos"></div>
+        </section>
     </main>
 
     <footer class="principal">
         <p>&copy; 2026 HuertoHogar — Proyecto Evaluación 1, DSY1104</p>
     </footer>
 
+    <script src="js/producto.js"></script>
+    <script src="js/carrito.js"></script>
+    <script>
+        function cargarFiltros() {
+            const contenedorFiltros = document.getElementById("filtros-categoria");
+            const categorias = productos
+                .map(function (producto) {
+                    return producto.categoria;
+                })
+                .filter(function (categoria, indice, lista) {
+                    return lista.indexOf(categoria) === indice;
+                });
+
+            const categoriasConTodas = ["Todas"].concat(categorias);
+
+            categoriasConTodas.forEach(function (categoria, indice) {
+                const boton = document.createElement("button");
+                boton.type = "button";
+                boton.className = "boton filtro-categoria";
+                boton.textContent = categoria;
+                boton.addEventListener("click", function () {
+                    mostrarProductos(filtrarPorCategoria(categoria), "productos-contenedor");
+                    document.querySelectorAll(".filtro-categoria").forEach(function (filtro) {
+                        filtro.classList.remove("activo");
+                    });
+                    boton.classList.add("activo");
+                });
+
+                if (indice === 0) {
+                    boton.classList.add("activo");
+                }
+
+                contenedorFiltros.appendChild(boton);
+            });
+        }
+
+        cargarFiltros();
+        mostrarProductos(filtrarPorCategoria("Todas"), "productos-contenedor");
+    </script>
 </body>
 </html>
