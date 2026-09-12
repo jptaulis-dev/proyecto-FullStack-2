@@ -242,3 +242,45 @@ footer.principal {
 .tarjeta-producto button + button {
     margin-top: 10px;
 }
+
+.fila-carrito {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 15px;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+}
+
+.precio-unitario {
+    color: #666666;
+    font-size: 14px;
+}
+
+.control-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.boton-cantidad {
+    padding: 6px 12px;
+    font-size: 16px;
+}
+
+.cantidad-numero {
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.boton-quitar {
+    background-color: #b3261e;
+}
+
+.boton-quitar:hover {
+    background-color: #8f1e17;
+}

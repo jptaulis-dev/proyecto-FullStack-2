@@ -145,18 +145,56 @@ function mostrarCarrito() {
         const subtotal = precioProd * carrito[i].cantidad;
         total = total + subtotal;
 
-        htmlCarrito += "<div class='fila-carrito'>";
-        htmlCarrito += "<strong>" + nombreProd + "</strong>";
-        htmlCarrito += "<span>$" + precioProd.toLocaleString("es-CL") + " c/u</span>";
-        htmlCarrito += "<div>";
-        htmlCarrito += "<button class='boton' onclick='cambiarCantidad(" + carrito[i].id + ", -1)'>-</button> ";
-        htmlCarrito += carrito[i].cantidad;
-        htmlCarrito += " <button class='boton' onclick='cambiarCantidad(" + carrito[i].id + ", 1)'>+</button>";
-        htmlCarrito += "</div>";
-        htmlCarrito += "<button class='boton' style='background-color:#b3261e;' onclick='quitarDelCarrito(" + carrito[i].id + ")'>Quitar</button>";
-        htmlCarrito += "</div>";
+            htmlCarrito += "<div class='fila-carrito'>";
+            htmlCarrito += "<strong>" + nombreProd + "</strong>";
+            htmlCarrito += "<span class='precio-unitario'>$" + precioProd.toLocaleString("es-CL") + " c/u</span>";
+            htmlCarrito += "<div class='control-cantidad'>";
+            htmlCarrito += "<button class='boton boton-cantidad' onclick='cambiarCantidad(" + carrito[i].id + ", -1)'>-</button>";
+            htmlCarrito += "<span class='cantidad-numero'>" + carrito[i].cantidad + "</span>";
+            htmlCarrito += "<button class='boton boton-cantidad' onclick='cambiarCantidad(" + carrito[i].id + ", 1)'>+</button>";
+            htmlCarrito += "</div>";
+            htmlCarrito += "<button class='boton boton-quitar' onclick='quitarDelCarrito(" + carrito[i].id + ")'>Quitar</button>";
+            htmlCarrito += "</div>";
     }
 
     contenedor.innerHTML = htmlCarrito;
     document.getElementById("total-carrito").innerHTML = "$" + total.toLocaleString("es-CL");
+}
+
+
+// funcion de pago, que se ejecuta al presionar el botón "Pagar"
+// funcion de pago, que se ejecuta al presionar el botón "Pagar"
+function pagar() {
+    const carrito = obtenerCarrito();
+
+    if (carrito.length === 0) {
+        alert("El carrito está vacío. No hay nada que pagar.");
+        return;
+    }
+
+    let resumen = "Resumen de la compra:\n\n";
+    let total = 0;
+
+    for (let i = 0; i < carrito.length; i++) {
+        let nombreProd = "";
+        let precioProd = 0;
+
+        for (let j = 0; j < productos.length; j++) {
+            if (productos[j].id === carrito[i].id) {
+                nombreProd = productos[j].nombre;
+                precioProd = productos[j].precio;
+            }
+        }
+
+        const subtotal = precioProd * carrito[i].cantidad;
+        total = total + subtotal;
+
+        resumen += nombreProd + " x " + carrito[i].cantidad + " = $" + subtotal.toLocaleString("es-CL") + "\n";
+    }
+
+    alert(resumen + "\nTotal a pagar: $" + total.toLocaleString("es-CL") + "\n\n¡Gracias por tu compra!");
+
+    guardarCarrito([]); // vaciamos el carrito
+    mostrarCarrito(); // mostamos el nuevo carrito
+    actualizarContadorCarrito(); // actualizamos el contador en el navegador
 }
