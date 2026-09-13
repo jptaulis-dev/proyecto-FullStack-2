@@ -144,17 +144,22 @@ main {
     font-size: 14px;
 }
 
+/* Sección hero de la página principal */
 .hero-imagen {
     flex: 1;
     min-width: 260px;
-    background-color: var(--blanco-suave);
-    border: 2px dashed var(--verde-esmeralda);
-    border-radius: 12px;
-    height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--gris-medio);
+    /* Eliminamos el background gris y el border dashed */
+}
+
+/* Le damos estilo profesional a la imagen que pongas adentro */
+.hero-imagen img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: contain; /* Ajusta la imagen sin deformarla */
+    filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.15)); /* Sombra elegante */
 }
 
 /* ---------- Botones ---------- */
