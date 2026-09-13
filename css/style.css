@@ -11,6 +11,19 @@
     --gris-medio: #666666;
 }
 
+.hero-image {
+     flex: 1;
+    min-width: 260px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* 3. Reseteo básico */
 * {
     margin: 0;
@@ -241,4 +254,53 @@ footer.principal {
 .tarjeta-producto .boton + .boton,
 .tarjeta-producto button + button {
     margin-top: 10px;
+}
+
+/* ---------- Página Nosotros ---------- */
+.nosotros-historia {
+    margin-bottom: 40px;
+}
+
+.nosotros-historia p {
+    line-height: 1.6;
+    font-size: 17px;
+}
+
+.nosotros-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.tarjeta-nosotros {
+    flex: 1;
+    min-width: 300px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.tarjeta-nosotros h3 {
+    color: var(--verde-esmeralda);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.tarjeta-nosotros p {
+    line-height: 1.6;
+    color: var(--gris-medio);
+}
+
+.nosotros-mapa p {
+    margin-bottom: 20px;
+    color: var(--gris-oscuro);
+}
+
+.contenedor-mapa {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--verde-esmeralda);
 }
