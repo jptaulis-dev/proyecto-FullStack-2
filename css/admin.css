@@ -1,0 +1,149 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-menu {
+    width: 220px;
+    background-color: #2E8B57;
+    padding: 20px 15px;
+    flex-shrink: 0;
+}
+
+.admin-menu .logo-admin {
+    color: white;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 25px;
+}
+
+.admin-menu nav a {
+    display: block;
+    color: white;
+    padding: 10px 8px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+}
+
+.admin-menu nav a:hover,
+.admin-menu nav a.activo {
+    background-color: rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+}
+
+.admin-contenido {
+    flex: 1;
+    padding: 30px;
+    background-color: #F7F7F7;
+}
+
+.admin-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.tarjeta-resumen {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.tarjeta-resumen .numero {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2E8B57;
+    margin: 5px 0 0;
+}
+
+.tabla-admin {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+}
+
+.tabla-admin th {
+    background-color: #f0f0f0;
+    color: #333333;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal-contenido {
+    width: min(100%, 520px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-cabecera,
+.modal-acciones {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.modal-cabecera {
+    margin-bottom: 20px;
+}
+
+.modal-cabecera h2 {
+    margin: 0;
+}
+
+.modal-cerrar {
+    border: 0;
+    background: transparent;
+    color: #666666;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.modal-acciones {
+    justify-content: flex-end;
+    margin-top: 22px;
+}
+
+.boton-secundario {
+    background-color: #666666;
+}
+
+@media (max-width: 700px) {
+    .admin-layout {
+        flex-direction: column;
+    }
+    .admin-menu {
+        width: 100%;
+    }
+}
