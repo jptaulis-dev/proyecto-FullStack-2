@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto - HuertoHogar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="principal">
+        <a href="index.html" class="logo">🥑 HuertoHogar</a>
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="productos.html">Productos</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <div class="acciones-header">
+            <a href="login.html">Iniciar sesión</a>
+            <a href="registro.html">Registrarse</a>
+            <a href="carrito.html" class="carrito-boton" id="contador-carrito">🛒 Carrito (0)</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Botón para volver atrás -->
+        <a href="productos.html" style="margin-bottom: 20px; display: inline-block; color: var(--marron-claro); font-weight: bold;">&larr; Volver al catálogo</a>
+        
+        <!-- Contenedor vacío donde JS inyectará el detalle del producto -->
+        <div id="detalle-contenedor" style="display: flex; flex-wrap: wrap; gap: 40px; background: white; padding: 40px; border-radius: 12px; border: 1px solid #e0e0e0; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        </div>
+    </main>
+
+    <footer class="principal">
+        <p>&copy; 2026 HuertoHogar — Proyecto Evaluación 1, DSY1104</p>
+    </footer>
+
+    <script src="js/comun.js"></script>
+    <script src="js/producto.js"></script>
+    <script src="js/carrito.js"></script>
+    
+    <!-- Lógica inteligente para leer la URL y mostrar el producto -->
+    <script>
+        // 1. Atrapamos el parámetro "?id=" de la barra de direcciones del navegador
+        const parametrosUrl = new URLSearchParams(window.location.search);
+        const idProductoStr = parametrosUrl.get("id");
+
+        if (idProductoStr !== null) {
+            const idBuscado = parseInt(idProductoStr);
+            let productoEncontrado = null;
+
+            // 2. Buscamos el producto en nuestro catálogo
+            for (let i = 0; i < productos.length; i++) {
+                if (productos[i].id === idBuscado) {
+                    productoEncontrado = productos[i];
+                    break;
+                }
+            }
+
+            // 3. Dibujamos la vista ampliada
+            if (productoEncontrado !== null) {
+                const contenedor = document.getElementById("detalle-contenedor");
+                let html = "";
+                
+                
+               // Zona de imagen (izquierda)
+                html += "<div style='flex: 1; min-width: 300px; display: flex; align-items: flex-start; justify-content: center;'>";
+                html += "<img src='" + productoEncontrado.imagen + "' alt='" + productoEncontrado.nombre + "' style='width: 100%; max-width: 450px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); object-fit: cover;'>";
+                html += "</div>";
+                
+                // Zona de información (derecha)
+                html += "<div style='flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;'>";
+                html += "<p style='color: var(--gris-medio); margin-bottom: 10px; font-weight: 600; text-transform: uppercase; font-size: 13px;'>" + productoEncontrado.categoria + "</p>";
+                html += "<h1 style='margin-top: 0; margin-bottom: 15px; font-size: 36px;'>" + productoEncontrado.nombre + "</h1>";
+                html += "<h2 style='color: var(--verde-esmeralda); font-size: 28px; margin-bottom: 20px;'>$" + productoEncontrado.precio.toLocaleString("es-CL") + " <span style='font-size: 16px; color: var(--gris-medio); font-family: Montserrat, sans-serif; font-weight: normal;'>/ " + productoEncontrado.unidad + "</span></h2>";
+                html += "<p style='margin-bottom: 25px; line-height: 1.6; font-size: 17px;'>" + productoEncontrado.descripcion + "</p>";
+                html += "<p style='font-weight: bold; margin-bottom: 30px; font-size: 15px; color: var(--gris-oscuro);'>Stock disponible: " + productoEncontrado.stock + " unidades</p>";
+
+                // Botón de compra
+                if (productoEncontrado.stock > 0) {
+                    html += "<button class='boton' style='font-size: 18px; padding: 15px 30px;' onclick='agregarAlCarrito(" + productoEncontrado.id + ", 1)'>Añadir al carrito 🛒</button>";
+                } else {
+                    html += "<button class='boton' disabled style='font-size: 18px; padding: 15px 30px; background-color: #ccc; cursor: not-allowed;'>Agotado</button>";
+                }
+
+                html += "</div>";
+                contenedor.innerHTML = html;
+            } else {
+                document.getElementById("detalle-contenedor").innerHTML = "<h2>Producto no encontrado en el catálogo.</h2>";
+            }
+        } else {
+            document.getElementById("detalle-contenedor").innerHTML = "<h2>No se seleccionó ningún producto.</h2>";
+        }
+    </script>
+</body>
+</html>
