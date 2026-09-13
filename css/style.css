@@ -256,51 +256,89 @@ footer.principal {
     margin-top: 10px;
 }
 
-/* ---------- Página Nosotros ---------- */
-.nosotros-historia {
-    margin-bottom: 40px;
-}
-
-.nosotros-historia p {
-    line-height: 1.6;
-    font-size: 17px;
-}
-
-.nosotros-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 50px;
-}
-
-.tarjeta-nosotros {
-    flex: 1;
-    min-width: 300px;
+.fila-carrito {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 15px;
+    align-items: center;
     background-color: white;
     border: 1px solid #e0e0e0;
-    border-radius: 12px;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+}
+
+.precio-unitario {
+    color: #666666;
+    font-size: 14px;
+}
+
+.control-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.boton-cantidad {
+    padding: 6px 12px;
+    font-size: 16px;
+}
+
+.cantidad-numero {
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.boton-quitar {
+    background-color: #b3261e;
+}
+
+.boton-quitar:hover {
+    background-color: #8f1e17;
+}
+
+/* ---------- Formularios ---------- */
+.formulario {
+    max-width: 600px;
+    background-color: white;
     padding: 30px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.tarjeta-nosotros h3 {
-    color: var(--verde-esmeralda);
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
-.tarjeta-nosotros p {
-    line-height: 1.6;
-    color: var(--gris-medio);
-}
-
-.nosotros-mapa p {
-    margin-bottom: 20px;
-    color: var(--gris-oscuro);
-}
-
-.contenedor-mapa {
     border-radius: 12px;
-    overflow: hidden;
-    border: 2px solid var(--verde-esmeralda);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+.grupo-form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-form label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--marron-claro);
+}
+
+.grupo-form input,
+.grupo-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.grupo-form input:focus,
+.grupo-form textarea:focus {
+    outline: none;
+    border-color: var(--verde-esmeralda);
+}
+
+.mensaje-error {
+    color: #b3261e; /* Rojo de error */
+    font-size: 13px;
+    margin-top: 5px;
+    min-height: 18px; /* Evita que el formulario salte cuando aparece el error */
 }

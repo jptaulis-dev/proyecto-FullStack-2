@@ -27,8 +27,32 @@
     </header>
 
     <main>
-        <h1>Contacto</h1>
-        <p style="color:#666666;">Próximo paso: formulario de contacto con validaciones JavaScript (nombre, correo, comentario).</p>
+       <h1>Contacto</h1>
+        <p>Envíanos un mensaje y te responderemos a la brevedad.</p>
+
+        <!-- Formulario con sus identificadores -->
+        <form id="form-contacto" class="formulario">
+            <div class="grupo-form">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre">
+                <span id="error-nombre" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo">
+                <span id="error-correo" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="comentario">Comentario:</label>
+                <textarea id="comentario" name="comentario" rows="5"></textarea>
+                <span id="error-comentario" class="mensaje-error"></span>
+            </div>
+
+            <button type="submit" class="boton">Enviar Mensaje</button>
+            <p id="mensaje-exito" style="color: green; display: none; margin-top: 15px; font-weight: bold;">¡Mensaje enviado correctamente!</p>
+        </form>
     </main>
 
     <footer class="principal">
@@ -36,6 +60,7 @@
     </footer>
 
     <script src="js/comun.js"></script>
+    <script src="js/contacto.js"></script>
 
 </body>
 </html>

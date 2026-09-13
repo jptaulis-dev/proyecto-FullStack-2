@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HuertoHogar - Blog</title>
+    <title>HuertoHogar - Detalle del blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -27,19 +27,42 @@
     </header>
 
     <main>
-        <h1>Blog</h1>
-        <p style="color:#666666;">Noticias sobre alimentación saludable y sostenibilidad.</p>
-        <section id="lista-articulos-blog"></section>
+        <p><a href="blog.html">&larr; Volver al blog</a></p>
+
+        <article id="detalle-blog">
+            <p>Cargando artículo...</p>
+        </article>
     </main>
 
     <footer class="principal">
         <p>&copy; 2026 HuertoHogar — Proyecto Evaluación 1, DSY1104</p>
     </footer>
 
-    <script src="js/comun.js"></script>
+    <script src="js/producto.js"></script>
+    <script src="js/carrito.js"></script>
     <script src="js/blog.js"></script>
     <script>
-        mostrarArticulosBlog("lista-articulos-blog");
+        actualizarContadorCarrito();
+
+        const idBlog = Number(new URLSearchParams(window.location.search).get("id"));
+        let articulo = null;
+
+        for (let i = 0; i < articulosBlog.length; i++) {
+            if (articulosBlog[i].id === idBlog) {
+                articulo = articulosBlog[i];
+            }
+        }
+
+        const contenedor = document.getElementById("detalle-blog");
+
+        if (articulo != null) {
+            contenedor.innerHTML =
+                "<img src='" + articulo.imagen + "' alt='" + articulo.titulo + "' style='width:100%; max-height:320px; object-fit:cover; border-radius:12px; margin-bottom:20px;'>" +
+                "<h1>" + articulo.titulo + "</h1>" +
+                "<p style='color:#333333; line-height:1.7;'>" + articulo.contenido + "</p>";
+        } else {
+            contenedor.innerHTML = "<p>Artículo no encontrado. <a href='blog.html'>Volver al blog</a></p>";
+        }
     </script>
 
 </body>
