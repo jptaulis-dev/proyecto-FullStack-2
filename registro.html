@@ -12,6 +12,7 @@
 
     <header class="principal">
         <a href="index.html" class="logo">🥑 HuertoHogar</a>
+
         <nav class="menu">
             <a href="index.html">Home</a>
             <a href="productos.html">Productos</a>
@@ -19,15 +20,56 @@
             <a href="blog.html">Blog</a>
             <a href="contacto.html">Contacto</a>
         </nav>
+
         <div class="acciones-header">
-            <a href="login.html">Iniciar sesión</a>
-            <a href="carrito.html" class="carrito-boton">🛒 Carrito</a>
+            <!-- Saludo al usuario -->
+            <span id="usuario-nav" style="color: white; font-weight: bold; margin-right: 15px;"></span>
+            
+            <!-- Botones de invitado -->
+            <a href="login.html" id="link-login">Iniciar sesión</a>
+            <a href="registro.html" id="link-registro">Registrarse</a>
+            
+            <!-- Botón de usuario logueado (Oculto por defecto) -->
+            <a href="#" id="link-logout" style="display: none;" onclick="cerrarSesion()">Cerrar sesión</a>
+            
+            <!-- Carrito -->
+            <a href="carrito.html" class="carrito-boton" id="contador-carrito">🛒 Carrito (0)</a>
         </div>
     </header>
 
-    <main>
-        <h1>Registro de usuario</h1>
-        <p style="color:#666666;">Próximo paso: formulario de registro (nombre, correo, contraseña, dirección de entrega, teléfono) con validaciones JavaScript.</p>
+   <main>
+        <h1>Crear Cuenta</h1>
+        <p>Únete a HuertoHogar y lleva lo mejor del campo a tu mesa.</p>
+
+        <!-- Formulario de Registro -->
+        <form id="form-registro" class="formulario">
+            <div class="grupo-form">
+                <label for="nombre-reg">Nombre completo:</label>
+                <input type="text" id="nombre-reg" name="nombre">
+                <span id="error-nombre-reg" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="correo-reg">Correo electrónico:</label>
+                <input type="email" id="correo-reg" name="correo">
+                <span id="error-correo-reg" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="pass-reg">Contraseña (Mínimo 6 caracteres):</label>
+                <input type="password" id="pass-reg" name="password">
+                <span id="error-pass-reg" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="pass-conf">Confirmar Contraseña:</label>
+                <input type="password" id="pass-conf" name="confirmar">
+                <span id="error-pass-conf" class="mensaje-error"></span>
+            </div>
+
+            <button type="submit" class="boton">Registrarse</button>
+            <p style="margin-top: 15px; font-size: 14px;">¿Ya tienes cuenta? <a href="login.html" style="font-weight: bold;">Inicia sesión aquí</a>.</p>
+        </form>
     </main>
 
     <footer class="principal">
@@ -35,6 +77,7 @@
     </footer>
 
     <script src="js/comun.js"></script>
+    <script src="js/registro.js"></script>
 
 </body>
 </html>

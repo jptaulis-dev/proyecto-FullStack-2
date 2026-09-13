@@ -12,6 +12,7 @@
 
     <header class="principal">
         <a href="index.html" class="logo">🥑 HuertoHogar</a>
+
         <nav class="menu">
             <a href="index.html">Home</a>
             <a href="productos.html">Productos</a>
@@ -19,10 +20,20 @@
             <a href="blog.html">Blog</a>
             <a href="contacto.html">Contacto</a>
         </nav>
+
         <div class="acciones-header">
-            <a href="login.html">Iniciar sesión</a>
-            <a href="registro.html">Registrarse</a>
-            <a href="carrito.html" class="carrito-boton">🛒 Carrito</a>
+            <!-- Saludo al usuario -->
+            <span id="usuario-nav" style="color: white; font-weight: bold; margin-right: 15px;"></span>
+            
+            <!-- Botones de invitado -->
+            <a href="login.html" id="link-login">Iniciar sesión</a>
+            <a href="registro.html" id="link-registro">Registrarse</a>
+            
+            <!-- Botón de usuario logueado (Oculto por defecto) -->
+            <a href="#" id="link-logout" style="display: none;" onclick="cerrarSesion()">Cerrar sesión</a>
+            
+            <!-- Carrito -->
+            <a href="carrito.html" class="carrito-boton" id="contador-carrito">🛒 Carrito (0)</a>
         </div>
     </header>
 

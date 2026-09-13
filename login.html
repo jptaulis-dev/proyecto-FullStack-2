@@ -12,6 +12,7 @@
 
     <header class="principal">
         <a href="index.html" class="logo">🥑 HuertoHogar</a>
+
         <nav class="menu">
             <a href="index.html">Home</a>
             <a href="productos.html">Productos</a>
@@ -19,15 +20,47 @@
             <a href="blog.html">Blog</a>
             <a href="contacto.html">Contacto</a>
         </nav>
+
         <div class="acciones-header">
-            <a href="registro.html">Registrarse</a>
-            <a href="carrito.html" class="carrito-boton">🛒 Carrito</a>
+            <!-- Saludo al usuario -->
+            <span id="usuario-nav" style="color: white; font-weight: bold; margin-right: 15px;"></span>
+            
+            <!-- Botones de invitado -->
+            <a href="login.html" id="link-login">Iniciar sesión</a>
+            <a href="registro.html" id="link-registro">Registrarse</a>
+            
+            <!-- Botón de usuario logueado (Oculto por defecto) -->
+            <a href="#" id="link-logout" style="display: none;" onclick="cerrarSesion()">Cerrar sesión</a>
+            
+            <!-- Carrito -->
+            <a href="carrito.html" class="carrito-boton" id="contador-carrito">🛒 Carrito (0)</a>
         </div>
     </header>
 
     <main>
-        <h1>Iniciar sesión</h1>
-        <p style="color:#666666;">Próximo paso: formulario de correo/contraseña con validaciones JavaScript.</p>
+        <h1>Iniciar Sesión</h1>
+        <p>Ingresa tus credenciales para continuar comprando.</p>
+
+        <!-- Formulario de Login -->
+        <form id="form-login" class="formulario">
+            <div class="grupo-form">
+                <label for="correo-login">Correo electrónico:</label>
+                <input type="email" id="correo-login" name="correo">
+                <span id="error-correo-login" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="pass-login">Contraseña:</label>
+                <input type="password" id="pass-login" name="password">
+                <span id="error-pass-login" class="mensaje-error"></span>
+            </div>
+
+            <!-- Aquí mostraremos si la clave está mal o no existe la cuenta -->
+            <span id="mensaje-general-login" class="mensaje-error" style="display: block; margin-bottom: 15px; font-weight: bold;"></span>
+
+            <button type="submit" class="boton">Ingresar</button>
+            <p style="margin-top: 15px; font-size: 14px;">¿No tienes cuenta? <a href="registro.html" style="font-weight: bold;">Regístrate aquí</a>.</p>
+        </form>
     </main>
 
     <footer class="principal">
@@ -35,6 +68,7 @@
     </footer>
 
     <script src="js/comun.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
 </html>
