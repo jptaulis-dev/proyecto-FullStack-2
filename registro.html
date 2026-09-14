@@ -22,17 +22,10 @@
         </nav>
 
         <div class="acciones-header">
-            <!-- Saludo al usuario -->
             <span id="usuario-nav" style="color: white; font-weight: bold; margin-right: 15px;"></span>
-            
-            <!-- Botones de invitado -->
             <a href="login.html" id="link-login">Iniciar sesión</a>
             <a href="registro.html" id="link-registro">Registrarse</a>
-            
-            <!-- Botón de usuario logueado (Oculto por defecto) -->
             <a href="#" id="link-logout" style="display: none;" onclick="cerrarSesion()">Cerrar sesión</a>
-            
-            <!-- Carrito -->
             <a href="carrito.html" class="carrito-boton" id="contador-carrito">🛒 Carrito (0)</a>
         </div>
     </header>
@@ -41,12 +34,23 @@
         <h1>Crear Cuenta</h1>
         <p>Únete a HuertoHogar y lleva lo mejor del campo a tu mesa.</p>
 
-        <!-- Formulario de Registro -->
         <form id="form-registro" class="formulario">
             <div class="grupo-form">
-                <label for="nombre-reg">Nombre completo:</label>
+                <label for="run-reg">RUN (sin puntos ni guion, ej: 19011022K):</label>
+                <input type="text" id="run-reg" name="run">
+                <span id="error-run-reg" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="nombre-reg">Nombre:</label>
                 <input type="text" id="nombre-reg" name="nombre">
                 <span id="error-nombre-reg" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="apellidos-reg">Apellidos:</label>
+                <input type="text" id="apellidos-reg" name="apellidos">
+                <span id="error-apellidos-reg" class="mensaje-error"></span>
             </div>
 
             <div class="grupo-form">
@@ -56,7 +60,7 @@
             </div>
 
             <div class="grupo-form">
-                <label for="pass-reg">Contraseña (Mínimo 6 caracteres):</label>
+                <label for="pass-reg">Contraseña (entre 4 y 10 caracteres):</label>
                 <input type="password" id="pass-reg" name="password">
                 <span id="error-pass-reg" class="mensaje-error"></span>
             </div>
@@ -65,6 +69,28 @@
                 <label for="pass-conf">Confirmar Contraseña:</label>
                 <input type="password" id="pass-conf" name="confirmar">
                 <span id="error-pass-conf" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="region-reg">Región:</label>
+                <select id="region-reg" name="region">
+                    <option value="">-- Selecciona tu región --</option>
+                </select>
+                <span id="error-region-reg" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="comuna-reg">Comuna:</label>
+                <select id="comuna-reg" name="comuna">
+                    <option value="">-- Primero selecciona una región --</option>
+                </select>
+                <span id="error-comuna-reg" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="direccion-reg">Dirección de entrega:</label>
+                <input type="text" id="direccion-reg" name="direccion">
+                <span id="error-direccion-reg" class="mensaje-error"></span>
             </div>
 
             <button type="submit" class="boton">Registrarse</button>

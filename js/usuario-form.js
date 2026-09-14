@@ -1,4 +1,4 @@
-// regiones y comunas de Chile (selección representativa)
+// regiones y comunas de Chile (misma lista que usamos en registro.js)
 const regionesComunas = {
     "Región de Arica y Parinacota": ["Arica", "Putre"],
     "Región de Tarapacá": ["Iquique", "Alto Hospicio"],
@@ -18,9 +18,8 @@ const regionesComunas = {
     "Región de Magallanes y la Antártica Chilena": ["Punta Arenas", "Puerto Natales"]
 };
 
-// al cargar la página, llenamos el select de regiones
 function cargarRegiones() {
-    const selectRegion = document.getElementById("region-reg");
+    const selectRegion = document.getElementById("region-usr");
     if (selectRegion == null) return;
 
     for (const nombreRegion in regionesComunas) {
@@ -33,12 +32,11 @@ function cargarRegiones() {
 
 cargarRegiones();
 
-// cuando cambia la región, actualizamos las comunas disponibles
-const selectRegionReg = document.getElementById("region-reg");
-if (selectRegionReg != null) {
-    selectRegionReg.addEventListener("change", function () {
-        const selectComuna = document.getElementById("comuna-reg");
-        const regionElegida = selectRegionReg.value;
+const selectRegionUsr = document.getElementById("region-usr");
+if (selectRegionUsr != null) {
+    selectRegionUsr.addEventListener("change", function () {
+        const selectComuna = document.getElementById("comuna-usr");
+        const regionElegida = selectRegionUsr.value;
 
         selectComuna.innerHTML = "";
 
@@ -48,7 +46,6 @@ if (selectRegionReg != null) {
         }
 
         const comunasDisponibles = regionesComunas[regionElegida];
-
         const opcionVacia = document.createElement("option");
         opcionVacia.value = "";
         opcionVacia.textContent = "-- Selecciona tu comuna --";
@@ -63,22 +60,14 @@ if (selectRegionReg != null) {
     });
 }
 
-// valida un RUN chileno sin puntos ni guion (ej: 19011022K)
 function runEsValido(run) {
-    if (run.length < 7 || run.length > 9) {
-        return false;
-    }
-
+    if (run.length < 7 || run.length > 9) return false;
     const cuerpo = run.slice(0, -1);
     const dv = run.slice(-1).toUpperCase();
-
-    if (!/^\d+$/.test(cuerpo)) {
-        return false;
-    }
+    if (!/^\d+$/.test(cuerpo)) return false;
 
     let suma = 0;
     let multiplo = 2;
-
     for (let i = cuerpo.length - 1; i >= 0; i--) {
         suma += Number(cuerpo[i]) * multiplo;
         multiplo = multiplo === 7 ? 2 : multiplo + 1;
@@ -92,72 +81,64 @@ function runEsValido(run) {
     return dv === dvEsperado;
 }
 
-document.getElementById("form-registro").addEventListener("submit", function(event) {
+document.getElementById("form-usuario").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // 1. Atrapamos los valores
-    const run = document.getElementById("run-reg").value.trim();
-    const nombre = document.getElementById("nombre-reg").value.trim();
-    const apellidos = document.getElementById("apellidos-reg").value.trim();
-    const correo = document.getElementById("correo-reg").value.trim();
-    const pass = document.getElementById("pass-reg").value.trim();
-    const passConf = document.getElementById("pass-conf").value.trim();
-    const region = document.getElementById("region-reg").value;
-    const comuna = document.getElementById("comuna-reg").value;
-    const direccion = document.getElementById("direccion-reg").value.trim();
+    const run = document.getElementById("run-usr").value.trim();
+    const nombre = document.getElementById("nombre-usr").value.trim();
+    const apellidos = document.getElementById("apellidos-usr").value.trim();
+    const correo = document.getElementById("correo-usr").value.trim();
+    const tipoUsuario = document.getElementById("tipo-usr").value;
+    const region = document.getElementById("region-usr").value;
+    const comuna = document.getElementById("comuna-usr").value;
+    const direccion = document.getElementById("direccion-usr").value.trim();
 
-    // 2. Atrapamos las zonas de error
-    const errorRun = document.getElementById("error-run-reg");
-    const errorNombre = document.getElementById("error-nombre-reg");
-    const errorApellidos = document.getElementById("error-apellidos-reg");
-    const errorCorreo = document.getElementById("error-correo-reg");
-    const errorPass = document.getElementById("error-pass-reg");
-    const errorPassConf = document.getElementById("error-pass-conf");
-    const errorRegion = document.getElementById("error-region-reg");
-    const errorComuna = document.getElementById("error-comuna-reg");
-    const errorDireccion = document.getElementById("error-direccion-reg");
+    const errorRun = document.getElementById("error-run-usr");
+    const errorNombre = document.getElementById("error-nombre-usr");
+    const errorApellidos = document.getElementById("error-apellidos-usr");
+    const errorCorreo = document.getElementById("error-correo-usr");
+    const errorTipo = document.getElementById("error-tipo-usr");
+    const errorRegion = document.getElementById("error-region-usr");
+    const errorComuna = document.getElementById("error-comuna-usr");
+    const errorDireccion = document.getElementById("error-direccion-usr");
+    const mensajeExito = document.getElementById("mensaje-exito-usr");
 
-    // Limpiamos errores previos
     errorRun.innerHTML = "";
     errorNombre.innerHTML = "";
     errorApellidos.innerHTML = "";
     errorCorreo.innerHTML = "";
-    errorPass.innerHTML = "";
-    errorPassConf.innerHTML = "";
+    errorTipo.innerHTML = "";
     errorRegion.innerHTML = "";
     errorComuna.innerHTML = "";
     errorDireccion.innerHTML = "";
+    mensajeExito.style.display = "none";
 
     let hayErrores = false;
 
-    // --- VALIDACIÓN DE RUN ---
     if (run === "") {
         errorRun.innerHTML = "El RUN es obligatorio.";
         hayErrores = true;
     } else if (!runEsValido(run)) {
-        errorRun.innerHTML = "El RUN no es válido (sin puntos ni guion, ej: 19011022K).";
+        errorRun.innerHTML = "El RUN no es válido (sin puntos ni guion).";
         hayErrores = true;
     }
 
-    // --- VALIDACIÓN DE NOMBRE ---
     if (nombre === "") {
-        errorNombre.innerHTML = "Por favor, ingresa tu nombre.";
+        errorNombre.innerHTML = "El nombre es obligatorio.";
         hayErrores = true;
     } else if (nombre.length > 50) {
         errorNombre.innerHTML = "El nombre no puede superar los 50 caracteres.";
         hayErrores = true;
     }
 
-    // --- VALIDACIÓN DE APELLIDOS ---
     if (apellidos === "") {
-        errorApellidos.innerHTML = "Por favor, ingresa tus apellidos.";
+        errorApellidos.innerHTML = "Los apellidos son obligatorios.";
         hayErrores = true;
     } else if (apellidos.length > 100) {
         errorApellidos.innerHTML = "Los apellidos no pueden superar los 100 caracteres.";
         hayErrores = true;
     }
 
-    // --- VALIDACIÓN DE CORREO (Estilo Duoc) ---
     if (correo === "") {
         errorCorreo.innerHTML = "El correo es obligatorio.";
         hayErrores = true;
@@ -174,36 +155,21 @@ document.getElementById("form-registro").addEventListener("submit", function(eve
         }
     }
 
-    // --- VALIDACIÓN DE CONTRASEÑA (entre 4 y 10 caracteres) ---
-    if (pass === "") {
-        errorPass.innerHTML = "La contraseña es obligatoria.";
-        hayErrores = true;
-    } else if (pass.length < 4 || pass.length > 10) {
-        errorPass.innerHTML = "La contraseña debe tener entre 4 y 10 caracteres.";
+    if (tipoUsuario === "") {
+        errorTipo.innerHTML = "Selecciona el tipo de usuario.";
         hayErrores = true;
     }
 
-    // --- VALIDACIÓN DE CONFIRMAR CONTRASEÑA ---
-    if (passConf === "") {
-        errorPassConf.innerHTML = "Debes confirmar tu contraseña.";
-        hayErrores = true;
-    } else if (passConf !== pass) {
-        errorPassConf.innerHTML = "Las contraseñas no coinciden.";
-        hayErrores = true;
-    }
-
-    // --- VALIDACIÓN DE REGIÓN Y COMUNA ---
     if (region === "") {
-        errorRegion.innerHTML = "Selecciona tu región.";
+        errorRegion.innerHTML = "Selecciona la región.";
         hayErrores = true;
     }
 
     if (comuna === "") {
-        errorComuna.innerHTML = "Selecciona tu comuna.";
+        errorComuna.innerHTML = "Selecciona la comuna.";
         hayErrores = true;
     }
 
-    // --- VALIDACIÓN DE DIRECCIÓN ---
     if (direccion === "") {
         errorDireccion.innerHTML = "La dirección es obligatoria.";
         hayErrores = true;
@@ -212,22 +178,8 @@ document.getElementById("form-registro").addEventListener("submit", function(eve
         hayErrores = true;
     }
 
-    // --- RESULTADO FINAL (GUARDAR EN LOCALSTORAGE) ---
     if (hayErrores === false) {
-        const nuevaCuenta = {
-            run: run,
-            nombre: nombre,
-            apellidos: apellidos,
-            correo: correo,
-            password: pass,
-            region: region,
-            comuna: comuna,
-            direccion: direccion
-        };
-
-        localStorage.setItem("huertohogar_cuenta", JSON.stringify(nuevaCuenta));
-
-        alert("¡Cuenta creada con éxito, " + nombre + "! Ahora por favor inicia sesión.");
-        window.location.href = "login.html";
+        mensajeExito.style.display = "block";
+        document.getElementById("form-usuario").reset();
     }
 });

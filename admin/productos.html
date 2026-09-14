@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuertoHogar Admin - Productos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        <aside class="admin-menu">
+            <a href="home.html" class="logo-admin">🥑 HuertoHogar Admin</a>
+            <nav>
+                <a href="home.html">Dashboard</a>
+                <a href="productos.html" class="activo">Productos</a>
+                <a href="usuarios.html">Usuarios</a>
+                <a href="../index.html">&larr; Volver a la tienda</a>
+            </nav>
+        </aside>
+
+        <main class="admin-contenido">
+            <div class="admin-topbar">
+                <h1>Productos</h1>
+                <button type="button" id="btn-nuevo-producto" class="boton">+ Nuevo producto</button>
+            </div>
+
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-productos-admin">
+                    <!-- El JS dibuja aquí las filas -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <div id="modal-producto" class="modal" hidden>
+        <div class="modal-contenido" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-producto">
+            <div class="modal-cabecera">
+                <h2 id="titulo-modal-producto">Nuevo producto</h2>
+                <button type="button" id="btn-cerrar-modal" class="modal-cerrar" aria-label="Cerrar">&times;</button>
+            </div>
+            <form id="form-modal-producto" class="formulario">
+                <div class="grupo-form">
+                    <label for="modal-codigo">Código:</label>
+                    <input type="text" id="modal-codigo" required>
+                    <span id="error-modal-codigo" class="mensaje-error"></span>
+                </div>
+                <div class="grupo-form">
+                    <label for="modal-nombre">Nombre:</label>
+                    <input type="text" id="modal-nombre" maxlength="100" required>
+                    <span id="error-modal-nombre" class="mensaje-error"></span>
+                </div>
+                <div class="grupo-form">
+                    <label for="modal-categoria">Categoría:</label>
+                    <select id="modal-categoria" required>
+                        <option value="">-- Selecciona --</option>
+                        <option>Frutas Frescas</option>
+                        <option>Verduras Orgánicas</option>
+                        <option>Productos Orgánicos</option>
+                        <option>Productos Lácteos</option>
+                    </select>
+                    <span id="error-modal-categoria" class="mensaje-error"></span>
+                </div>
+                <div class="grupo-form">
+                    <label for="modal-precio">Precio:</label>
+                    <input type="number" id="modal-precio" min="0" step="0.01" required>
+                    <span id="error-modal-precio" class="mensaje-error"></span>
+                </div>
+                <div class="grupo-form">
+                    <label for="modal-stock">Stock:</label>
+                    <input type="number" id="modal-stock" min="0" step="1" required>
+                    <span id="error-modal-stock" class="mensaje-error"></span>
+                </div>
+                <div class="modal-acciones">
+                    <button type="button" id="btn-cancelar-modal" class="boton boton-secundario">Cancelar</button>
+                    <button type="submit" id="btn-guardar-producto" class="boton">Crear producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/producto.js"></script>
+    <script src="../js/admin-productos.js"></script>
+
+</body>
+</html>
