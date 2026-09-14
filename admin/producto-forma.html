@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuertoHogar Admin - Nuevo/Editar producto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        <aside class="admin-menu">
+            <a href="home.html" class="logo-admin">🥑 HuertoHogar Admin</a>
+            <nav>
+                <a href="home.html">Dashboard</a>
+                <a href="productos.html" class="activo">Productos</a>
+                <a href="usuarios.html">Usuarios</a>
+                <a href="../index.html">&larr; Volver a la tienda</a>
+            </nav>
+        </aside>
+
+        <main class="admin-contenido">
+            <h1>Nuevo producto</h1>
+
+            <form id="form-producto" class="formulario" style="max-width:500px;">
+                <div class="grupo-form">
+                    <label for="codigo-prod">Código producto:</label>
+                    <input type="text" id="codigo-prod" name="codigo">
+                    <span id="error-codigo-prod" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="nombre-prod">Nombre:</label>
+                    <input type="text" id="nombre-prod" name="nombre">
+                    <span id="error-nombre-prod" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="descripcion-prod">Descripción (opcional):</label>
+                    <textarea id="descripcion-prod" name="descripcion" rows="3"></textarea>
+                    <span id="error-descripcion-prod" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="precio-prod">Precio:</label>
+                    <input type="number" id="precio-prod" name="precio" min="0" step="0.01">
+                    <span id="error-precio-prod" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="stock-prod">Stock:</label>
+                    <input type="number" id="stock-prod" name="stock" min="0" step="1">
+                    <span id="error-stock-prod" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="stock-critico-prod">Stock crítico (opcional):</label>
+                    <input type="number" id="stock-critico-prod" name="stockCritico" min="0" step="1">
+                    <span id="error-stock-critico-prod" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="categoria-prod">Categoría:</label>
+                    <select id="categoria-prod" name="categoria">
+                        <option value="">-- Selecciona --</option>
+                        <option>Frutas Frescas</option>
+                        <option>Verduras Orgánicas</option>
+                        <option>Productos Orgánicos</option>
+                        <option>Productos Lácteos</option>
+                    </select>
+                    <span id="error-categoria-prod" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="imagen-prod">Imagen (opcional):</label>
+                    <input type="file" id="imagen-prod" name="imagen" accept="image/*">
+                </div>
+
+                <button type="submit" class="boton">Guardar producto</button>
+                <p id="mensaje-exito-prod" style="display:none; color:#2E8B57; font-weight:bold; margin-top:10px;">✅ Producto guardado (simulado, sin backend).</p>
+            </form>
+        </main>
+    </div>
+
+    <script src="../js/producto-form.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuertoHogar Admin - Nuevo/Editar usuario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        <aside class="admin-menu">
+            <a href="home.html" class="logo-admin">🥑 HuertoHogar Admin</a>
+            <nav>
+                <a href="home.html">Dashboard</a>
+                <a href="productos.html">Productos</a>
+                <a href="usuarios.html" class="activo">Usuarios</a>
+                <a href="../index.html">&larr; Volver a la tienda</a>
+            </nav>
+        </aside>
+
+        <main class="admin-contenido">
+            <h1>Nuevo usuario</h1>
+
+            <form id="form-usuario" class="formulario" style="max-width:500px;">
+                <div class="grupo-form">
+                    <label for="run-usr">RUN (sin puntos ni guion):</label>
+                    <input type="text" id="run-usr" name="run">
+                    <span id="error-run-usr" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="nombre-usr">Nombre:</label>
+                    <input type="text" id="nombre-usr" name="nombre">
+                    <span id="error-nombre-usr" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="apellidos-usr">Apellidos:</label>
+                    <input type="text" id="apellidos-usr" name="apellidos">
+                    <span id="error-apellidos-usr" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="correo-usr">Correo:</label>
+                    <input type="email" id="correo-usr" name="correo">
+                    <span id="error-correo-usr" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="fecha-nac-usr">Fecha de nacimiento (opcional):</label>
+                    <input type="date" id="fecha-nac-usr" name="fechaNacimiento">
+                </div>
+
+                <div class="grupo-form">
+                    <label for="tipo-usr">Tipo de usuario:</label>
+                    <select id="tipo-usr" name="tipoUsuario">
+                        <option value="">-- Selecciona --</option>
+                        <option>Administrador</option>
+                        <option>Vendedor</option>
+                        <option>Cliente</option>
+                    </select>
+                    <span id="error-tipo-usr" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="region-usr">Región:</label>
+                    <select id="region-usr" name="region">
+                        <option value="">-- Selecciona tu región --</option>
+                    </select>
+                    <span id="error-region-usr" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="comuna-usr">Comuna:</label>
+                    <select id="comuna-usr" name="comuna">
+                        <option value="">-- Primero selecciona una región --</option>
+                    </select>
+                    <span id="error-comuna-usr" class="mensaje-error"></span>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="direccion-usr">Dirección:</label>
+                    <input type="text" id="direccion-usr" name="direccion">
+                    <span id="error-direccion-usr" class="mensaje-error"></span>
+                </div>
+
+                <button type="submit" class="boton">Guardar usuario</button>
+                <p id="mensaje-exito-usr" style="display:none; color:#2E8B57; font-weight:bold; margin-top:10px;">✅ Usuario guardado (simulado, sin backend).</p>
+            </form>
+        </main>
+    </div>
+
+    <script src="../js/usuario-form.js"></script>
+
+</body>
+</html>

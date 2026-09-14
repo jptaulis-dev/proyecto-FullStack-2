@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuertoHogar Admin - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        <aside class="admin-menu">
+            <a href="home.html" class="logo-admin">🥑 HuertoHogar Admin</a>
+            <nav>
+                <a href="home.html" class="activo">Dashboard</a>
+                <a href="productos.html">Productos</a>
+                <a href="usuarios.html">Usuarios</a>
+                <a href="../index.html">&larr; Volver a la tienda</a>
+            </nav>
+        </aside>
+
+        <main class="admin-contenido">
+            <div class="admin-topbar">
+                <h1>¡Hola, Administrador!</h1>
+            </div>
+
+            <section style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px;">
+                <div class="tarjeta-resumen">
+                    <span style="color:#666666;">Productos totales</span>
+                    <p class="numero" id="total-productos">0</p>
+                </div>
+                <div class="tarjeta-resumen">
+                    <span style="color:#666666;">Con poco stock</span>
+                    <p class="numero" id="total-poco-stock">0</p>
+                </div>
+                <div class="tarjeta-resumen">
+                    <span style="color:#666666;">Agotados</span>
+                    <p class="numero" id="total-agotados">0</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/producto.js"></script>
+    <script>
+        document.getElementById("total-productos").textContent = productos.length;
+
+        let pocoStock = 0;
+        let agotados = 0;
+
+        for (let i = 0; i < productos.length; i++) {
+            if (productos[i].stock === 0) {
+                agotados++;
+            } else if (tienePocoStock(productos[i])) {
+                pocoStock++;
+            }
+        }
+
+        document.getElementById("total-poco-stock").textContent = pocoStock;
+        document.getElementById("total-agotados").textContent = agotados;
+    </script>
+
+</body>
+</html>

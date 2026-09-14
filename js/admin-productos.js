@@ -7,7 +7,6 @@ let productoEditandoId = null;
 
 function cargarProductos() {
     const guardados = localStorage.getItem(CLAVE_PRODUCTOS_ADMIN);
-
     if (guardados !== null) {
         try {
             return JSON.parse(guardados);
@@ -15,10 +14,7 @@ function cargarProductos() {
             localStorage.removeItem(CLAVE_PRODUCTOS_ADMIN);
         }
     }
-
-    return productos.map(function (producto) {
-        return Object.assign({}, producto);
-    });
+    return productos.map(function (producto) { return Object.assign({}, producto); });
 }
 
 function guardarProductos() {
@@ -33,13 +29,11 @@ function escaparHtml(valor) {
 
 function renderizarProductos() {
     cuerpoTabla.innerHTML = "";
-
     productosAdmin.forEach(function (producto) {
         const fila = document.createElement("tr");
         const estadoStock = producto.stock === 0
             ? "0 (agotado)"
             : tienePocoStock(producto) ? producto.stock + " (poco stock)" : producto.stock;
-
         fila.innerHTML =
             "<td>" + escaparHtml(producto.codigo) + "</td>" +
             "<td>" + escaparHtml(producto.nombre) + "</td>" +
@@ -74,9 +68,7 @@ function cerrarModal() {
 }
 
 function limpiarErrores() {
-    document.querySelectorAll(".modal .mensaje-error").forEach(function (elemento) {
-        elemento.textContent = "";
-    });
+    document.querySelectorAll(".modal .mensaje-error").forEach(function (elemento) { elemento.textContent = ""; });
 }
 
 function mostrarError(id, mensaje) {
@@ -86,7 +78,6 @@ function mostrarError(id, mensaje) {
 formulario.addEventListener("submit", function (evento) {
     evento.preventDefault();
     limpiarErrores();
-
     const codigo = document.getElementById("modal-codigo").value.trim();
     const nombre = document.getElementById("modal-nombre").value.trim();
     const categoria = document.getElementById("modal-categoria").value;
@@ -114,7 +105,6 @@ formulario.addEventListener("submit", function (evento) {
         const producto = productosAdmin.find(function (elemento) { return elemento.id === productoEditandoId; });
         Object.assign(producto, datos);
     }
-
     guardarProductos();
     renderizarProductos();
     cerrarModal();

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuertoHogar Admin - Usuarios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        <aside class="admin-menu">
+            <a href="home.html" class="logo-admin">🥑 HuertoHogar Admin</a>
+            <nav>
+                <a href="home.html">Dashboard</a>
+                <a href="productos.html">Productos</a>
+                <a href="usuarios.html" class="activo">Usuarios</a>
+                <a href="../index.html">&larr; Volver a la tienda</a>
+            </nav>
+        </aside>
+
+        <main class="admin-contenido">
+            <div class="admin-topbar">
+                <h1>Usuarios</h1>
+                <a href="usuario-form.html" class="boton">+ Nuevo usuario</a>
+            </div>
+
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Tipo</th>
+                        <th>Región</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-usuarios-admin">
+                    <!-- La cuenta registrada en localStorage aparece aquí (si existe) -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script>
+        const cuentaStr = localStorage.getItem("huertohogar_cuenta");
+        const cuerpoTabla = document.getElementById("tabla-usuarios-admin");
+
+        if (cuentaStr === null) {
+            cuerpoTabla.innerHTML = "<tr><td colspan='5'>No hay usuarios registrados todavía.</td></tr>";
+        } else {
+            const cuenta = JSON.parse(cuentaStr);
+            cuerpoTabla.innerHTML =
+                "<tr>" +
+                "<td>" + cuenta.nombre + " " + (cuenta.apellidos || "") + "</td>" +
+                "<td>" + cuenta.correo + "</td>" +
+                "<td>Cliente</td>" +
+                "<td>" + (cuenta.region || "-") + "</td>" +
+                "<td><a href='usuario-form.html' class='boton'>Editar</a></td>" +
+                "</tr>";
+        }
+    </script>
+
+</body>
+</html>
